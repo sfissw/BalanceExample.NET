@@ -44,15 +44,15 @@ namespace BalanceExample.NET
             m_manager = new CManager();
             var lists = new List<string>();
             using (FileStream fs = new FileStream(@"D:\MetaTrader5SDK\Examples\Manager\BalanceExample.NET\user.txt", FileMode.Open, FileAccess.Read))
-            { 
-            using (TextReader tr = new StreamReader(fs, Encoding.Default))
             {
-                string line;
-                while ((line = tr.ReadLine()) != null)
+                using (TextReader tr = new StreamReader(fs, Encoding.Default))
                 {
-                    lists.Add(line);
+                    string line;
+                    while ((line = tr.ReadLine()) != null)
+                    {
+                        lists.Add(line);
+                    }
                 }
-            }
             }
             url = lists[0];
             username = lists[1];
@@ -60,6 +60,8 @@ namespace BalanceExample.NET
             this.m_Server.Text = url;
             this.m_Loginname.Text = username;
             this.m_Password.Text = password;
+            lists.Clear();
+            lists = null;
         }
         //+------------------------------------------------------------------+
         //| GC destructor                                                    |
@@ -326,6 +328,44 @@ namespace BalanceExample.NET
         {
             UpdateButtons();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string userName = this.textBoxUserAddUserName.Text.Trim();
+            if (userName == string.Empty)
+            {
+                userName = null;
+            }
+            this.textBoxUserAddReturnInfo.Text = this.m_manager.UserAdd(
+                this.textBoxUserAddGroup.Text.Trim(),
+                uint.Parse(this.textBoxUserAddLevelage.Text.Trim()),
+                this.textBoxUserAddMainPassword.Text.Trim(),
+                this.textBoxUserAddReadonlyPassword.Text.Trim(),
+                userName == null ? null : userName
+                ).ToString();
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string userArrayNameStartWords = this.textBoxUserAddArrayUserNameStartWords.Text.Trim();
+            if (userArrayNameStartWords == string.Empty)
+            {
+                userArrayNameStartWords = null;
+            }
+            this.textBoxUserAddArrayReturnInfo.Text = string.Empty;
+            foreach (string s in this.m_manager.UserAddArray(
+                uint.Parse(this.textBoxUserAddArrayLength.Text.Trim()),
+                this.textBoxUserAddArrayGroup.Text.Trim(),
+                uint.Parse(this.textBoxUserAddArrayLevelage.Text.Trim()),
+                this.textBoxUserAddArrayMainPassword.Text.Trim(),
+                this.textBoxUserAddArrayReadonlyPassword.Text.Trim(),
+                userArrayNameStartWords == null ? null : userArrayNameStartWords))
+            {
+                this.textBoxUserAddArrayReturnInfo.Text += (s + System.Environment.NewLine);
+            }
+        }
+
     }
 }
 //+------------------------------------------------------------------+
