@@ -366,6 +366,10 @@ namespace BalanceExample.NET
             }
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.textBoxUserDeleteReturnInfo.Text = this.m_manager.UserDelete(ulong.Parse(this.textBoxUserDeleteLoginID.Text.Trim())).ToString();
+        }
     }
 }
 //+------------------------------------------------------------------+

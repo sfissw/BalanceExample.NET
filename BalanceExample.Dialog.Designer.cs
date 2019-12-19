@@ -50,6 +50,7 @@ namespace BalanceExample.NET
             this.m_Deposit = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.textBoxUserAddLevelage = new System.Windows.Forms.TextBox();
             this.textBoxUserAddGroup = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -62,6 +63,10 @@ namespace BalanceExample.NET
             this.button1 = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.textBoxUserAddArrayLevelage = new System.Windows.Forms.TextBox();
+            this.textBoxUserAddArrayGroup = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
             this.textBoxUserAddArrayLength = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.textBoxUserAddArrayUserNameStartWords = new System.Windows.Forms.TextBox();
@@ -72,11 +77,11 @@ namespace BalanceExample.NET
             this.label17 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
-            this.textBoxUserAddLevelage = new System.Windows.Forms.TextBox();
-            this.textBoxUserAddArrayLevelage = new System.Windows.Forms.TextBox();
-            this.textBoxUserAddArrayGroup = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label24 = new System.Windows.Forms.Label();
+            this.textBoxUserDeleteLoginID = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.textBoxUserDeleteReturnInfo = new System.Windows.Forms.TextBox();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
@@ -92,6 +97,7 @@ namespace BalanceExample.NET
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -389,6 +395,7 @@ namespace BalanceExample.NET
             // 
             this.tabControl.Controls.Add(this.tabPage1);
             this.tabControl.Controls.Add(this.tabPage2);
+            this.tabControl.Controls.Add(this.tabPage3);
             this.tabControl.Location = new System.Drawing.Point(458, 11);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
@@ -416,6 +423,14 @@ namespace BalanceExample.NET
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "UserAdd";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // textBoxUserAddLevelage
+            // 
+            this.textBoxUserAddLevelage.Location = new System.Drawing.Point(382, 132);
+            this.textBoxUserAddLevelage.Name = "textBoxUserAddLevelage";
+            this.textBoxUserAddLevelage.Size = new System.Drawing.Size(37, 21);
+            this.textBoxUserAddLevelage.TabIndex = 12;
+            this.textBoxUserAddLevelage.Text = "100";
             // 
             // textBoxUserAddGroup
             // 
@@ -536,6 +551,40 @@ namespace BalanceExample.NET
             this.tabPage2.Text = "userAddArray";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // textBoxUserAddArrayLevelage
+            // 
+            this.textBoxUserAddArrayLevelage.Location = new System.Drawing.Point(439, 132);
+            this.textBoxUserAddArrayLevelage.Name = "textBoxUserAddArrayLevelage";
+            this.textBoxUserAddArrayLevelage.Size = new System.Drawing.Size(37, 21);
+            this.textBoxUserAddArrayLevelage.TabIndex = 22;
+            this.textBoxUserAddArrayLevelage.Text = "100";
+            // 
+            // textBoxUserAddArrayGroup
+            // 
+            this.textBoxUserAddArrayGroup.Location = new System.Drawing.Point(144, 131);
+            this.textBoxUserAddArrayGroup.Name = "textBoxUserAddArrayGroup";
+            this.textBoxUserAddArrayGroup.Size = new System.Drawing.Size(230, 21);
+            this.textBoxUserAddArrayGroup.TabIndex = 21;
+            this.textBoxUserAddArrayGroup.Text = "demo\\demoforex";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(380, 135);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(53, 12);
+            this.label22.TabIndex = 20;
+            this.label22.Text = "levelage";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(103, 135);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(35, 12);
+            this.label23.TabIndex = 19;
+            this.label23.Text = "group";
+            // 
             // textBoxUserAddArrayLength
             // 
             this.textBoxUserAddArrayLength.Location = new System.Drawing.Point(186, 169);
@@ -623,47 +672,54 @@ namespace BalanceExample.NET
             this.label18.TabIndex = 9;
             this.label18.Text = "Want to add UserNameArrayStartWords";
             // 
-            // textBoxUserAddLevelage
+            // tabPage3
             // 
-            this.textBoxUserAddLevelage.Location = new System.Drawing.Point(382, 132);
-            this.textBoxUserAddLevelage.Name = "textBoxUserAddLevelage";
-            this.textBoxUserAddLevelage.Size = new System.Drawing.Size(37, 21);
-            this.textBoxUserAddLevelage.TabIndex = 12;
-            this.textBoxUserAddLevelage.Text = "100";
+            this.tabPage3.Controls.Add(this.textBoxUserDeleteReturnInfo);
+            this.tabPage3.Controls.Add(this.button3);
+            this.tabPage3.Controls.Add(this.textBoxUserDeleteLoginID);
+            this.tabPage3.Controls.Add(this.label24);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(599, 482);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "UserDelete";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // textBoxUserAddArrayLevelage
+            // label24
             // 
-            this.textBoxUserAddArrayLevelage.Location = new System.Drawing.Point(439, 132);
-            this.textBoxUserAddArrayLevelage.Name = "textBoxUserAddArrayLevelage";
-            this.textBoxUserAddArrayLevelage.Size = new System.Drawing.Size(37, 21);
-            this.textBoxUserAddArrayLevelage.TabIndex = 22;
-            this.textBoxUserAddArrayLevelage.Text = "100";
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(30, 26);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(89, 12);
+            this.label24.TabIndex = 0;
+            this.label24.Text = "要删除的登录ID";
             // 
-            // textBoxUserAddArrayGroup
+            // textBoxUserDeleteLoginID
             // 
-            this.textBoxUserAddArrayGroup.Location = new System.Drawing.Point(144, 131);
-            this.textBoxUserAddArrayGroup.Name = "textBoxUserAddArrayGroup";
-            this.textBoxUserAddArrayGroup.Size = new System.Drawing.Size(230, 21);
-            this.textBoxUserAddArrayGroup.TabIndex = 21;
-            this.textBoxUserAddArrayGroup.Text = "demo\\demoforex";
+            this.textBoxUserDeleteLoginID.Location = new System.Drawing.Point(125, 23);
+            this.textBoxUserDeleteLoginID.Name = "textBoxUserDeleteLoginID";
+            this.textBoxUserDeleteLoginID.Size = new System.Drawing.Size(427, 21);
+            this.textBoxUserDeleteLoginID.TabIndex = 1;
+            this.textBoxUserDeleteLoginID.Text = "2288";
             // 
-            // label22
+            // button3
             // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(380, 135);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(53, 12);
-            this.label22.TabIndex = 20;
-            this.label22.Text = "levelage";
+            this.button3.Location = new System.Drawing.Point(474, 74);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 2;
+            this.button3.Text = "Do it！";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // label23
+            // textBoxUserDeleteReturnInfo
             // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(103, 135);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(35, 12);
-            this.label23.TabIndex = 19;
-            this.label23.Text = "group";
+            this.textBoxUserDeleteReturnInfo.Location = new System.Drawing.Point(32, 111);
+            this.textBoxUserDeleteReturnInfo.Multiline = true;
+            this.textBoxUserDeleteReturnInfo.Name = "textBoxUserDeleteReturnInfo";
+            this.textBoxUserDeleteReturnInfo.ReadOnly = true;
+            this.textBoxUserDeleteReturnInfo.Size = new System.Drawing.Size(517, 354);
+            this.textBoxUserDeleteReturnInfo.TabIndex = 16;
             // 
             // CBalanceExampleDlg
             // 
@@ -715,6 +771,8 @@ namespace BalanceExample.NET
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -771,6 +829,11 @@ namespace BalanceExample.NET
         private System.Windows.Forms.TextBox textBoxUserAddArrayGroup;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox textBoxUserDeleteLoginID;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox textBoxUserDeleteReturnInfo;
     }
   }
 //+------------------------------------------------------------------+

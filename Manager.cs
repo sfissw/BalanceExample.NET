@@ -4,7 +4,7 @@
 //|                                        http://www.metaquotes.net |
 //+------------------------------------------------------------------+
 namespace BalanceExample.NET
-  {
+{
     using MetaQuotes.MT5CommonAPI;
     using MetaQuotes.MT5ManagerAPI;
     using System;
@@ -209,8 +209,8 @@ namespace BalanceExample.NET
                 user.Leverage(100);
                 user.Group(@"demo\demoforex");
                 mtRetCode = this.m_manager.UserAdd(user, mainPassword, readonlyPassword);
-            }         
-            
+            }
+
             return mtRetCode;
         }
 
@@ -220,7 +220,7 @@ namespace BalanceExample.NET
             //string mqid = null;
             using (CIMTUser user = this.m_manager.UserCreate())
             {
-                if(userName!=null)
+                if (userName != null)
                 {
                     user.Name(userName);
                 }
@@ -247,18 +247,18 @@ namespace BalanceExample.NET
         /// <param name="readonlyPassword"></param>
         /// <param name="userNameStartWords"></param>
         /// <returns></returns>
-        public List<string> UserAddArray(uint length,string group, uint levelage, string mainPassword, string readonlyPassword, string userNameStartWords = null)
+        public List<string> UserAddArray(uint length, string group, uint levelage, string mainPassword, string readonlyPassword, string userNameStartWords = null)
         {
             List<string> mtRetCodeStrings = new List<string>();
             using (CIMTUserArray userArray = this.m_manager.UserCreateArray())
             {
-                for (uint iCount=0; iCount <length; iCount++)
+                for (uint iCount = 0; iCount < length; iCount++)
                 {
                     using (CIMTUser user = this.m_manager.UserCreate())
                     {
                         if (userNameStartWords != null)
                         {
-                            user.Name(userNameStartWords+(iCount+1).ToString());
+                            user.Name(userNameStartWords + (iCount + 1).ToString());
                         }
                         user.Leverage(levelage);
                         user.Group(group);
@@ -270,6 +270,11 @@ namespace BalanceExample.NET
             }
             return mtRetCodeStrings;
         }
+        public MTRetCode UserDelete(ulong loginID)
+        {
+            MTRetCode mtRetCode = MTRetCode.MT_RET_ERROR;
+            mtRetCode = this.m_manager.UserDelete(loginID);
+            return mtRetCode;
+        }
     }
-//+------------------------------------------------------------------+
 }
