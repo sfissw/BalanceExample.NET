@@ -80,6 +80,10 @@
     <Reference Include="MetaQuotes.MT5ManagerAPI">
       <HintPath>..\..\..\Libs\MetaQuotes.MT5ManagerAPI$(TargetNamePostfix).dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -93,7 +97,6 @@
       <DependentUpon>BalanceExample.Dialog.cs</DependentUpon>
     </Compile>
     <Compile Include="BalanceExample.cs" />
-    <Compile Include="Manager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="BalanceExample.Dialog.resx">
       <DependentUpon>BalanceExample.Dialog.cs</DependentUpon>
@@ -101,6 +104,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MT5Manager\MT5Manager.csproj">
+      <Project>{429e2f7f-c947-4331-b24f-d76dba706216}</Project>
+      <Name>MT5Manager</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

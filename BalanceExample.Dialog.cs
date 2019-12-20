@@ -16,6 +16,7 @@ namespace BalanceExample.NET
     using System.Text;
     using System.Threading.Tasks;
     using System.Windows.Forms;
+    using MT5Manager;
     //+------------------------------------------------------------------+
     //|                                                                  |
     //+------------------------------------------------------------------+
@@ -329,24 +330,32 @@ namespace BalanceExample.NET
             UpdateButtons();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void UserAddMin_Click(object sender, EventArgs e)
         {
             string userName = this.textBoxUserAddUserName.Text.Trim();
             if (userName == string.Empty)
             {
                 userName = null;
             }
-            this.textBoxUserAddReturnInfo.Text = this.m_manager.UserAdd(
-                this.textBoxUserAddGroup.Text.Trim(),
-                uint.Parse(this.textBoxUserAddLevelage.Text.Trim()),
-                this.textBoxUserAddMainPassword.Text.Trim(),
-                this.textBoxUserAddReadonlyPassword.Text.Trim(),
-                userName == null ? null : userName
-                ).ToString();
+            string group = this.textBoxUserAddGroup.Text.Trim();
+            uint levelage = uint.Parse(this.textBoxUserAddLevelage.Text.Trim());
+            string mainPassword = this.textBoxUserAddMainPassword.Text.Trim();
+            string readonlyPassword = this.textBoxUserAddReadonlyPassword.Text.Trim();
+            this.textBoxUserAddReturnInfo.Text =
+                this.m_manager
 
+                .UserAdd(
+                group,
+                levelage,
+                mainPassword,
+                readonlyPassword,
+                userName
+                )
+
+                .ToString();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void UserAddArray_Click(object sender, EventArgs e)
         {
             string userArrayNameStartWords = this.textBoxUserAddArrayUserNameStartWords.Text.Trim();
             if (userArrayNameStartWords == string.Empty)
@@ -354,21 +363,150 @@ namespace BalanceExample.NET
                 userArrayNameStartWords = null;
             }
             this.textBoxUserAddArrayReturnInfo.Text = string.Empty;
-            foreach (string s in this.m_manager.UserAddArray(
-                uint.Parse(this.textBoxUserAddArrayLength.Text.Trim()),
-                this.textBoxUserAddArrayGroup.Text.Trim(),
-                uint.Parse(this.textBoxUserAddArrayLevelage.Text.Trim()),
-                this.textBoxUserAddArrayMainPassword.Text.Trim(),
-                this.textBoxUserAddArrayReadonlyPassword.Text.Trim(),
-                userArrayNameStartWords == null ? null : userArrayNameStartWords))
+            uint userAddArrayLength = uint.Parse(this.textBoxUserAddArrayLength.Text.Trim());
+            string userAddArrayGroup = this.textBoxUserAddArrayGroup.Text.Trim();
+            uint userAddArrayLevelage = uint.Parse(this.textBoxUserAddArrayLevelage.Text.Trim());
+            string userAddArrayMainPassword = this.textBoxUserAddArrayMainPassword.Text.Trim();
+            string userAddArrayReadonlyPassword = this.textBoxUserAddArrayReadonlyPassword.Text.Trim();
+            foreach (string s in this.m_manager
+
+                .UserAddArray(
+                userAddArrayLength,
+                userAddArrayGroup,
+                userAddArrayLevelage,
+                userAddArrayMainPassword,
+                userAddArrayReadonlyPassword,
+                userArrayNameStartWords
+                )
+
+                )
             {
                 this.textBoxUserAddArrayReturnInfo.Text += (s + System.Environment.NewLine);
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void UserDelete_Click(object sender, EventArgs e)
         {
-            this.textBoxUserDeleteReturnInfo.Text = this.m_manager.UserDelete(ulong.Parse(this.textBoxUserDeleteLoginID.Text.Trim())).ToString();
+            ulong loginID = ulong.Parse(this.textBoxUserDeleteLoginID.Text.Trim());
+            this.textBoxUserDeleteReturnInfo.Text = this.m_manager
+
+                .UserDelete(loginID)
+
+                .ToString();
+        }
+
+        private void UserAddMax_Click(object sender, EventArgs e)
+        {
+            string userAddGroup = this.textBoxUserAddGroup.Text.Trim();
+            userAddGroup = userAddGroup == string.Empty ? null : userAddGroup;
+            uint userAddLevelage = uint.Parse(this.textBoxUserAddLevelage.Text.Trim());
+            string userAddMainPassword = this.textBoxUserAddMainPassword.Text.Trim();
+            userAddMainPassword = userAddMainPassword == string.Empty ? null : userAddMainPassword;
+            string userAddReadonlyPassword = this.textBoxUserAddReadonlyPassword.Text.Trim();
+            userAddReadonlyPassword = userAddReadonlyPassword == string.Empty ? null : userAddReadonlyPassword;
+            //ulong loginID=this.textBoxUserAddLoginID.Text.Trim() == string.Empty ? (ulong?)(null) : (ulong?)(ulong.Parse(this.textBoxUserAddLoginID.Text.Trim())),
+            //    this.textBoxUserAddRights.Text.Trim() == string.Empty ? (CIMTUser.EnUsersRights?)null : (CIMTUser.EnUsersRights?)(CIMTUser.EnUsersRights)Enum.Parse(typeof(CIMTUser.EnUsersRights), this.textBoxUserAddRights.Text.Trim()),
+            //    this.textBoxUserAddCompany.Text.Trim() == string.Empty ? null : this.textBoxUserAddCompany.Text.Trim(),
+            //    this.textBoxUserAddAccount.Text.Trim() == string.Empty ? null : this.textBoxUserAddAccount.Text.Trim(),
+            //    this.textBoxUserAddCountry.Text.Trim() == string.Empty ? null : this.textBoxUserAddCountry.Text.Trim(),
+            //    this.textBoxUserAddLanguage.Text.Trim() == string.Empty ? (uint?)(null) : (uint?)(uint.Parse(this.textBoxUserAddLanguage.Text.Trim())),
+            //    this.textBoxUserAddCity.Text.Trim() == string.Empty ? null : this.textBoxUserAddCity.Text.Trim(),
+            //    this.textBoxUserAddState.Text.Trim() == string.Empty ? null : this.textBoxUserAddState.Text.Trim(),
+            //    this.textBoxUserAddZIPCode.Text.Trim() == string.Empty ? null : this.textBoxUserAddZIPCode.Text.Trim(),
+            //    this.textBoxUserAddAddress.Text.Trim() == string.Empty ? null : this.textBoxUserAddAddress.Text.Trim(),
+            //    this.textBoxUserAddPhone.Text.Trim() == string.Empty ? null : this.textBoxUserAddPhone.Text.Trim(),
+            //    this.textBoxUserAddEMail.Text.Trim() == string.Empty ? null : this.textBoxUserAddEMail.Text.Trim(),
+            //    this.textBoxUserAddID.Text.Trim() == string.Empty ? null : this.textBoxUserAddID.Text.Trim(),
+            //    this.textBoxUserAddStatus.Text.Trim() == string.Empty ? null : this.textBoxUserAddStatus.Text.Trim(),
+            //    this.textBoxUserAddComment.Text.Trim() == string.Empty ? null : this.textBoxUserAddComment.Text.Trim(),
+            //    this.textBoxUserAddColor.Text.Trim() == string.Empty ? (uint?)(null) : (uint?)(uint.Parse(this.textBoxUserAddColor.Text.Trim())),
+            //    this.textBoxUserAddPhonePassword.Text.Trim() == string.Empty ? null : this.textBoxUserAddPhonePassword.Text.Trim(),
+            //    this.textBoxUserAddAgent.Text.Trim() == string.Empty ? (ulong?)(null) : (ulong?)(ulong.Parse(this.textBoxUserAddAgent.Text.Trim())),
+            //    this.textBoxUserAddLeadSource.Text.Trim() == string.Empty ? null : this.textBoxUserAddLeadSource.Text.Trim(),
+            //    this.textBoxUserAddLeadCampaign.Text.Trim() == string.Empty ? null : this.textBoxUserAddLeadCampaign.Text.Trim(),
+            //    this.textBoxUserAddApp_id.Text.Trim() == string.Empty ? (ushort?)(null) : (ushort?)(ushort.Parse(this.textBoxUserAddApp_id.Text.Trim())),
+            //    this.textBoxUserAddIdApp.Text.Trim() == string.Empty ? (byte?)(null) : (byte?)(byte.Parse(this.textBoxUserAddIdApp.Text.Trim())),
+            //    this.textBoxUserAddValueLong.Text.Trim() == string.Empty ? (long?)(null) : (long?)(long.Parse(this.textBoxUserAddValueLong.Text.Trim())),
+            //    this.textBoxUserAddValueUlong.Text.Trim() == string.Empty ? (ulong?)(null) : (ulong?)(ulong.Parse(this.textBoxUserAddValueUlong.Text.Trim())),
+            //    this.textBoxUserAddValueDouble.Text.Trim() == string.Empty ? (double?)(null) : (double?)(double.Parse(this.textBoxUserAddValueDouble.Text.Trim()))
+
+            this.textBoxUserAddReturnInfo.Text = this.m_manager.UserAdd(
+                this.textBoxUserAddGroup.Text.Trim(),
+                uint.Parse(this.textBoxUserAddLevelage.Text.Trim()),
+                this.textBoxUserAddMainPassword.Text.Trim(),
+                this.textBoxUserAddReadonlyPassword.Text.Trim(),
+                this.textBoxUserAddUserName.Text.Trim() == string.Empty ? null : this.textBoxUserAddUserName.Text.Trim(),
+                this.textBoxUserAddLoginID.Text.Trim() == string.Empty ? (ulong?)(null) : (ulong?)(ulong.Parse(this.textBoxUserAddLoginID.Text.Trim())),
+                this.textBoxUserAddRights.Text.Trim() == string.Empty ? (CIMTUser.EnUsersRights?)null : (CIMTUser.EnUsersRights?)(CIMTUser.EnUsersRights)Enum.Parse(typeof(CIMTUser.EnUsersRights), this.textBoxUserAddRights.Text.Trim()),
+                this.textBoxUserAddCompany.Text.Trim() == string.Empty ? null : this.textBoxUserAddCompany.Text.Trim(),
+                this.textBoxUserAddAccount.Text.Trim() == string.Empty ? null : this.textBoxUserAddAccount.Text.Trim(),
+                this.textBoxUserAddCountry.Text.Trim() == string.Empty ? null : this.textBoxUserAddCountry.Text.Trim(),
+                this.textBoxUserAddLanguage.Text.Trim() == string.Empty ? (uint?)(null) : (uint?)(uint.Parse(this.textBoxUserAddLanguage.Text.Trim())),
+                this.textBoxUserAddCity.Text.Trim() == string.Empty ? null : this.textBoxUserAddCity.Text.Trim(),
+                this.textBoxUserAddState.Text.Trim() == string.Empty ? null : this.textBoxUserAddState.Text.Trim(),
+                this.textBoxUserAddZIPCode.Text.Trim() == string.Empty ? null : this.textBoxUserAddZIPCode.Text.Trim(),
+                this.textBoxUserAddAddress.Text.Trim() == string.Empty ? null : this.textBoxUserAddAddress.Text.Trim(),
+                this.textBoxUserAddPhone.Text.Trim() == string.Empty ? null : this.textBoxUserAddPhone.Text.Trim(),
+                this.textBoxUserAddEMail.Text.Trim() == string.Empty ? null : this.textBoxUserAddEMail.Text.Trim(),
+                this.textBoxUserAddID.Text.Trim() == string.Empty ? null : this.textBoxUserAddID.Text.Trim(),
+                this.textBoxUserAddStatus.Text.Trim() == string.Empty ? null : this.textBoxUserAddStatus.Text.Trim(),
+                this.textBoxUserAddComment.Text.Trim() == string.Empty ? null : this.textBoxUserAddComment.Text.Trim(),
+                this.textBoxUserAddColor.Text.Trim() == string.Empty ? (uint?)(null) : (uint?)(uint.Parse(this.textBoxUserAddColor.Text.Trim())),
+                this.textBoxUserAddPhonePassword.Text.Trim() == string.Empty ? null : this.textBoxUserAddPhonePassword.Text.Trim(),
+                this.textBoxUserAddAgent.Text.Trim() == string.Empty ? (ulong?)(null) : (ulong?)(ulong.Parse(this.textBoxUserAddAgent.Text.Trim())),
+                this.textBoxUserAddLeadSource.Text.Trim() == string.Empty ? null : this.textBoxUserAddLeadSource.Text.Trim(),
+                this.textBoxUserAddLeadCampaign.Text.Trim() == string.Empty ? null : this.textBoxUserAddLeadCampaign.Text.Trim(),
+                this.textBoxUserAddApp_id.Text.Trim() == string.Empty ? (ushort?)(null) : (ushort?)(ushort.Parse(this.textBoxUserAddApp_id.Text.Trim())),
+                this.textBoxUserAddIdApp.Text.Trim() == string.Empty ? (byte?)(null) : (byte?)(byte.Parse(this.textBoxUserAddIdApp.Text.Trim())),
+                this.textBoxUserAddValueLong.Text.Trim() == string.Empty ? (long?)(null) : (long?)(long.Parse(this.textBoxUserAddValueLong.Text.Trim())),
+                this.textBoxUserAddValueUlong.Text.Trim() == string.Empty ? (ulong?)(null) : (ulong?)(ulong.Parse(this.textBoxUserAddValueUlong.Text.Trim())),
+                this.textBoxUserAddValueDouble.Text.Trim() == string.Empty ? (double?)(null) : (double?)(double.Parse(this.textBoxUserAddValueDouble.Text.Trim()))
+                ).ToString();
+        }
+
+        private void UserRequest_Click(object sender, EventArgs e)
+        {
+            ulong loginID = ulong.Parse(this.textBoxUserRequestLoginID.Text.Trim());
+            CManager.UserRequestReturnValue returnValue =
+                this.m_manager
+
+                .UserRequest(loginID);
+
+            if (returnValue.mtRetCode == MTRetCode.MT_RET_OK || returnValue.mtRetCode == MTRetCode.MT_RET_OK_NONE)
+            {
+                this.textBoxUserRequestReturnInfo.Text = returnValue.cIMTUserJson;
+            }
+            else
+            {
+                this.textBoxUserRequestReturnInfo.Text = returnValue.mtRetCode.ToString();
+            }
+        }
+
+        private void UserUpdatMin_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UserUpdatMax_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UserPasswordCheck_Click(object sender, EventArgs e)
+        {
+            CIMTUser.EnUsersPasswords userPasswordCheckType = (CIMTUser.EnUsersPasswords)Enum.Parse(typeof(CIMTUser.EnUsersPasswords), this.textBoxUserPasswordCheckType.Text.Trim());
+            ulong userPasswordCheckLoginID = ulong.Parse(this.textBoxUserPasswordCheckLoginID.Text.Trim());
+            string userPasswordCheckPassword = this.textBoxUserPasswordCheckPassword.Text.Trim();
+            this.textBoxUserPasswordCheckReturnInfo.Text =
+                this.m_manager
+
+                .UserPasswordCheck(
+                userPasswordCheckType,
+                userPasswordCheckLoginID,
+                userPasswordCheckPassword
+                )
+
+                .ToString();
         }
     }
 }
