@@ -74,11 +74,11 @@
     </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MetaQuotes.MT5CommonAPI">
-      <HintPath>..\..\..\Libs\MetaQuotes.MT5CommonAPI$(TargetNamePostfix).dll</HintPath>
+    <Reference Include="MetaQuotes.MT5CommonAPI64">
+      <HintPath>MT5Manager\MetaQuotes.MT5CommonAPI64.dll</HintPath>
     </Reference>
-    <Reference Include="MetaQuotes.MT5ManagerAPI">
-      <HintPath>..\..\..\Libs\MetaQuotes.MT5ManagerAPI$(TargetNamePostfix).dll</HintPath>
+    <Reference Include="MetaQuotes.MT5ManagerAPI64">
+      <HintPath>MT5Manager\MetaQuotes.MT5ManagerAPI64.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -107,7 +107,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MT5Manager\MT5Manager.csproj">
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="MT5Manager\MT5Manager.csproj">
       <Project>{429e2f7f-c947-4331-b24f-d76dba706216}</Project>
       <Name>MT5Manager</Name>
     </ProjectReference>
